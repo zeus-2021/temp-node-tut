@@ -1,0 +1,33 @@
+
+const http  = require('http');
+
+const hostname = '127.0.0.1';
+
+const port = 3000;
+
+
+const server = http.createServer((req,response) =>{
+
+    if(req.url === '/'){
+
+        response.end('welcome to homepage');
+    }
+    
+    if(req.url === '/about'){
+
+        response.end('about page')
+    }
+    
+    response.end(`
+        <h1>Oops</h1>
+        <p>we cant'find the page you are looking for</p>
+        <a href="/">back homepage</a>
+
+    `)
+})
+
+server.listen(port,hostname,() => {
+
+    console.log('server running at host://' + hostname +":" + port);
+})
+
